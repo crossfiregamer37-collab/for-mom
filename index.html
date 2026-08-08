@@ -1,11 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For Mom ❤️</title>
+    <title>For Mummy ❤️</title>
 
     <style>
         * {
@@ -14,79 +13,199 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Georgia, serif;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #3d2630;
+            background: #fff7f8;
+            overflow-x: hidden;
+        }
+
+        /* Floating hearts */
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 22px;
+            opacity: 0.5;
+            animation: floatUp linear infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-duration: 9s;
+        }
+
+        .heart:nth-child(2) {
+            left: 25%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            left: 45%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+        .heart:nth-child(4) {
+            left: 65%;
+            animation-duration: 13s;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(5) {
+            left: 85%;
+            animation-duration: 11s;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(30deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sections */
+
+        section {
             min-height: 100vh;
-            background: linear-gradient(135deg, #fff1f2, #ffe4e6, #fff7ed);
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: #3f2933;
-            overflow: hidden;
+            padding: 70px 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        .container {
-            width: 90%;
-            max-width: 700px;
-            padding: 50px 25px;
+        .content {
+            width: 100%;
+            max-width: 850px;
         }
 
-        .heart {
-            font-size: 55px;
-            animation: heartbeat 1.5s infinite;
-            margin-bottom: 20px;
+        /* Home */
+
+        #home {
+            background:
+                radial-gradient(circle at top left, #ffe4e6, transparent 40%),
+                radial-gradient(circle at bottom right, #ffedd5, transparent 40%),
+                #fff7f8;
         }
 
-        h1 {
-            font-size: 55px;
-            margin-bottom: 20px;
+        .big-heart {
+            font-size: 70px;
+            animation: beat 1.5s infinite;
+            margin-bottom: 25px;
         }
 
-        .subtitle {
-            font-size: 21px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-
-        button {
-            border: none;
-            padding: 15px 30px;
-            border-radius: 30px;
-            background: #e11d48;
-            color: white;
-            font-size: 17px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-            background: #be123c;
-        }
-
-        #message {
-            display: none;
-            margin-top: 35px;
-            font-size: 19px;
-            line-height: 1.8;
-            animation: fadeIn 1s ease;
-        }
-
-        @keyframes heartbeat {
+        @keyframes beat {
             0%, 100% {
                 transform: scale(1);
             }
 
             50% {
-                transform: scale(1.15);
+                transform: scale(1.13);
             }
         }
 
-        @keyframes fadeIn {
+        h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 22px;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .scroll {
+            margin-top: 45px;
+            font-size: 15px;
+            opacity: 0.65;
+        }
+
+        /* Cards */
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 45px;
+            border-radius: 28px;
+            box-shadow: 0 15px 45px rgba(100, 50, 60, 0.12);
+            backdrop-filter: blur(8px);
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 30px;
+        }
+
+        .text {
+            font-size: 19px;
+            line-height: 2;
+        }
+
+        .highlight {
+            font-size: 25px;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+
+        button {
+            border: none;
+            padding: 16px 30px;
+            margin-top: 30px;
+            border-radius: 50px;
+            background: #e11d48;
+            color: white;
+            font-size: 17px;
+            font-family: inherit;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 8px 20px rgba(225, 29, 72, 0.2);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .reveal {
+            margin-top: 30px;
+            animation: reveal 0.8s ease;
+        }
+
+        @keyframes reveal {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateY(20px);
             }
 
             to {
@@ -94,77 +213,451 @@
                 transform: translateY(0);
             }
         }
+
+        /* Promise */
+
+        #promise {
+            background: linear-gradient(135deg, #fff1f2, #fff7ed);
+        }
+
+        .promise-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .promise-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            text-align: left;
+            font-size: 18px;
+        }
+
+        /* Memories */
+
+        #memories {
+            background: #fffaf5;
+        }
+
+        .memory-box {
+            border: 2px dashed #e5a5ad;
+            padding: 45px 25px;
+            border-radius: 25px;
+            margin-top: 25px;
+        }
+
+        .memory-box p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Final */
+
+        #final {
+            background:
+                radial-gradient(circle at center, #ffe4e6, #fff7f8);
+        }
+
+        .final-text {
+            font-size: clamp(25px, 4vw, 40px);
+            line-height: 1.6;
+            font-weight: bold;
+        }
+
+        .signature {
+            margin-top: 35px;
+            font-size: 22px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #fff1f2;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 600px) {
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            h2 {
+                font-size: 34px;
+            }
+
+            .text {
+                font-size: 17px;
+            }
+
+            .promise-item {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-
+    <!-- Floating hearts -->
+    <div class="hearts">
         <div class="heart">❤️</div>
-
-        <h1>Mummy, I'm Sorry.</h1>
-
-        <p class="subtitle">
-            Mujhe pata hai maine aapko disappoint kiya hai...
-        </p>
-
-        <button onclick="showMessage()">
-            Please hear me out ❤️
-        </button>
-
-        <p id="message">
-
-            Mummy, mujhe pata hai ki 5/20 dekhkar aapko kitna bura laga hoga.
-            Sach bolun toh mujhe bhi pata hai ki meri galti thi.
-            Maine Maths ke liye properly nahi padha, aur maine jitni mehnat karni chahiye thi,
-            utni nahi ki. Main iska koi excuse nahi banana chahta.
-
-            <br><br>
-
-            I know you're sad, and now you're angry with me too.
-            And honestly, I understand why.
-
-            Aap hamesha mere liye itna kuch karti ho aur mujhse sirf itna chahti ho
-            ki main apni taraf se poori mehnat karun.
-
-            <br><br>
-
-            Isliye Mummy, I'm really sorry. ❤️
-
-            Main yeh promise nahi karunga ki next exam mein 100% marks hi aayenge,
-            kyunki main koi impossible promise nahi karna chahta.
-
-            Lekin main yeh promise zaroor karta hoon ki main properly padhunga,
-            apna time waste kam karunga aur next exam ke liye genuinely hard work karunga.
-
-            <br><br>
-
-            5/20 meri final story nahi hai.
-            Ye bas ek reminder hai ki mujhe aur mehnat karni hai.
-
-            Main chahta hoon ki next exam mein aapko mere marks dekhkar
-            disappointment nahi, balki proud feel ho.
-
-            <br><br>
-
-            I know saying sorry is easy...
-            ab mujhe apne actions se prove karna hai.
-
-            <br><br>
-
-            <strong>Mummy, I'm sorry. I love you. ❤️</strong>
-
-        </p>
-
+        <div class="heart">♡</div>
+        <div class="heart">❤️</div>
+        <div class="heart">♡</div>
+        <div class="heart">❤️</div>
     </div>
 
+
+    <!-- HOME -->
+
+    <section id="home">
+
+        <div class="content">
+
+            <div class="big-heart">❤️</div>
+
+            <h1>Mummy, I'm Sorry.</h1>
+
+            <p class="subtitle">
+                I made this little website because sometimes
+                saying everything face-to-face is difficult.
+            </p>
+
+            <p class="scroll">
+                ↓ Scroll down, Mummy ↓
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- APOLOGY -->
+
+    <section id="apology">
+
+        <div class="content card">
+
+            <h2>I'm Really Sorry ❤️</h2>
+
+            <div class="text">
+
+                <p>
+                    Mummy, mujhe pata hai ki <strong>5/20 in Maths</strong>
+                    dekhkar aapko kitna bura laga hoga.
+                </p>
+
+                <br>
+
+                <p>
+                    Sach bolun toh mujhe bhi pata hai ki meri galti thi.
+                    Maine properly nahi padha aur jitni mehnat karni chahiye thi,
+                    utni nahi ki.
+                </p>
+
+                <br>
+
+                <p>
+                    Main apni galti ke liye koi excuse nahi banana chahta.
+                    <strong>It was my mistake.</strong>
+                </p>
+
+                <p class="highlight">
+                    I'm sorry, Mummy. ❤️
+                </p>
+
+                <p>
+                    I know you're sad, and now you're angry with me too.
+                    And honestly, I understand why.
+                </p>
+
+                <br>
+
+                <p>
+                    Aap mere liye itna kuch karti ho aur mujhse sirf itna chahti ho
+                    ki main apni taraf se honestly effort karun.
+                </p>
+
+                <br>
+
+                <p>
+                    Shayad maine is baar aapko woh effort nahi dikhaya.
+                    And for that, I'm genuinely sorry.
+                </p>
+
+            </div>
+
+            <button onclick="showApology()">
+                There's more I want to say ❤️
+            </button>
+
+            <div id="extraApology" class="hidden reveal">
+
+                <p class="text">
+
+                    Main yeh promise nahi karunga ki next exam mein
+                    suddenly 100% marks aa jayenge.
+
+                    <br><br>
+
+                    Main koi impossible promise nahi karna chahta.
+
+                    <br><br>
+
+                    But I <strong>can</strong> promise that I'll work harder.
+
+                    <br><br>
+
+                    Main apna time better manage karunga,
+                    Maths ko properly time dunga,
+                    daily revision karunga aur jo topics nahi aate
+                    unhe ignore nahi karunga.
+
+                    <br><br>
+
+                    Mujhe pata hai ki sirf "sorry" bolne se kuch change nahi hoga.
+
+                    <br><br>
+
+                    <strong>
+                        Ab mujhe apne actions se prove karna hai.
+                    </strong>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROMISE -->
+
+    <section id="promise">
+
+        <div class="content">
+
+            <h2>My Promise To You 🤞</h2>
+
+            <p class="subtitle">
+                Mummy, this time I don't want my words to be just words.
+            </p>
+
+            <div class="promise-list">
+
+                <div class="promise-item">
+                    📚 I will study more seriously.
+                </div>
+
+                <div class="promise-item">
+                    ⏰ I will manage my time better.
+                </div>
+
+                <div class="promise-item">
+                    🧮 I will give Maths proper attention.
+                </div>
+
+                <div class="promise-item">
+                    📝 I will revise regularly instead of waiting for the exam.
+                </div>
+
+                <div class="promise-item">
+                    💪 I will learn from this result instead of giving excuses.
+                </div>
+
+                <div class="promise-item">
+                    ❤️ And most importantly, I'll keep trying even when things get difficult.
+                </div>
+
+            </div>
+
+            <button onclick="showPromise()">
+                One last promise 🤍
+            </button>
+
+            <div id="promiseMessage" class="hidden reveal">
+
+                <div class="card">
+
+                    <p class="text">
+
+                        I promise that for my next upcoming exam,
+                        I'll genuinely work harder and try my best
+                        to score better.
+
+                        <br><br>
+
+                        Maybe I won't become perfect overnight,
+                        but I'll become better than I was today.
+
+                        <br><br>
+
+                        And Mummy...
+
+                        <br><br>
+
+                        <strong>
+                            I want my next result to make you proud. ❤️
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section id="memories">
+
+        <div class="content">
+
+            <h2>For Everything You Do 🌷</h2>
+
+            <div class="memory-box">
+
+                <p>
+                    I may not say it every day,
+                    but I notice the things you do for me.
+                </p>
+
+                <br>
+
+                <p>
+                    The reminders to study.
+                    The questions about school.
+                    The concern about my future.
+                    The times you tell me to do better.
+                </p>
+
+                <br>
+
+                <p>
+                    Sometimes I may feel irritated by it,
+                    but deep down I know why you do it.
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>
+                        Because you care about me.
+                    </strong>
+                </p>
+
+                <br>
+
+                <p>
+                    And I don't ever want to take that for granted.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section id="final">
+
+        <div class="content">
+
+            <div class="big-heart">❤️</div>
+
+            <p class="final-text">
+
+                5/20 is just one result.
+
+                <br>
+
+                It doesn't define me.
+
+                <br><br>
+
+                What I do after it does.
+
+            </p>
+
+            <p class="signature">
+                Mummy, I'm sorry.<br>
+                I love you. ❤️
+            </p>
+
+            <button onclick="finalMessage()">
+                ❤️ Click this
+            </button>
+
+            <div id="finalMessage" class="hidden reveal">
+
+                <div class="card">
+
+                    <p class="text">
+
+                        Thank you for always wanting the best for me.
+
+                        <br><br>
+
+                        I'll work hard.
+
+                        <br>
+
+                        I'll try again.
+
+                        <br>
+
+                        And I'll make sure this mistake
+                        becomes a reason to improve.
+
+                        <br><br>
+
+                        <strong>
+                            Love you, Mummy. ❤️
+                        </strong>
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        Made with ❤️ by your son
+    </footer>
+
+
     <script>
-        function showMessage() {
-            document.getElementById("message").style.display = "block";
+
+        function showApology() {
+            document.getElementById("extraApology").style.display = "block";
         }
+
+        function showPromise() {
+            document.getElementById("promiseMessage").style.display = "block";
+        }
+
+        function finalMessage() {
+            document.getElementById("finalMessage").style.display = "block";
+        }
+
     </script>
 
 </body>
 </html>
-```
