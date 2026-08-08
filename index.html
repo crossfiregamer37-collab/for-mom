@@ -3,27 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>For Mom ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6, #fff7ed);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #3f2933;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            padding: 50px 25px;
+        }
+
+        .heart {
+            font-size: 55px;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 21px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        button {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            background: #e11d48;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            background: #be123c;
+        }
+
+        #message {
+            display: none;
+            margin-top: 35px;
+            font-size: 19px;
+            line-height: 1.8;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Mom, I'm Sorry ❤️</h1>
+    <div class="container">
 
-    <p>
-        I know my grades were low, and I know I disappointed you.
-    </p>
+        <div class="heart">❤️</div>
 
-    <p>
-        This little website is my way of saying something
-        that I sometimes find difficult to say out loud...
-    </p>
+        <h1>Mom, I'm Sorry.</h1>
 
-    <h2>I'M SORRY, MOM.</h2>
+        <p class="subtitle">
+            I know my grades were low...
+            and I know I could have done better.
+        </p>
 
-    <p>
-        I love you, and I promise I'll try harder.
-    </p>
+        <button onclick="showMessage()">
+            Please hear me out ❤️
+        </button>
+
+        <p id="message">
+            I know marks are important, but what matters even more
+            to me is knowing how much you do for me every single day.
+            <br><br>
+            I'm sorry for making you disappointed.
+            I can't promise that I'll never make mistakes,
+            but I can promise that I'll learn from this one.
+            <br><br>
+            I love you, Mom. ❤️
+        </p>
+
+    </div>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+    </script>
 
 </body>
 </html>
