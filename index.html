@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,78 @@
             overflow-x: hidden;
         }
 
-        /* Floating hearts */
+        /* =========================
+           OPENING SCREEN
+        ========================= */
+
+        #opening {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6, #fff7ed);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 1.5s ease, visibility 1.5s ease;
+        }
+
+        #opening.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .opening-content {
+            padding: 30px;
+        }
+
+        .opening-heart {
+            font-size: 70px;
+            margin-bottom: 30px;
+            animation: openingHeart 1.5s infinite;
+        }
+
+        .opening-text {
+            font-size: clamp(28px, 6vw, 55px);
+            color: #3d2630;
+            font-weight: normal;
+            opacity: 0;
+            animation: textAppear 2s ease forwards;
+        }
+
+        .opening-small {
+            margin-top: 25px;
+            font-size: 17px;
+            opacity: 0;
+            animation: textAppear 2s ease 1s forwards;
+        }
+
+        @keyframes openingHeart {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           FLOATING HEARTS
+        ========================= */
+
         .hearts {
             position: fixed;
             inset: 0;
@@ -86,7 +158,9 @@
             }
         }
 
-        /* Sections */
+        /* =========================
+           SECTIONS
+        ========================= */
 
         section {
             min-height: 100vh;
@@ -104,7 +178,9 @@
             max-width: 850px;
         }
 
-        /* Home */
+        /* =========================
+           HOME
+        ========================= */
 
         #home {
             background:
@@ -147,7 +223,9 @@
             opacity: 0.65;
         }
 
-        /* Cards */
+        /* =========================
+           CARDS
+        ========================= */
 
         .card {
             background: rgba(255, 255, 255, 0.8);
@@ -173,7 +251,9 @@
             font-weight: bold;
         }
 
-        /* Buttons */
+        /* =========================
+           BUTTONS
+        ========================= */
 
         button {
             border: none;
@@ -214,7 +294,9 @@
             }
         }
 
-        /* Promise */
+        /* =========================
+           PROMISE
+        ========================= */
 
         #promise {
             background: linear-gradient(135deg, #fff1f2, #fff7ed);
@@ -234,7 +316,9 @@
             font-size: 18px;
         }
 
-        /* Memories */
+        /* =========================
+           MEMORIES
+        ========================= */
 
         #memories {
             background: #fffaf5;
@@ -252,7 +336,9 @@
             line-height: 1.8;
         }
 
-        /* Final */
+        /* =========================
+           FINAL
+        ========================= */
 
         #final {
             background:
@@ -278,7 +364,9 @@
             z-index: 1;
         }
 
-        /* Mobile */
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 600px) {
 
@@ -303,13 +391,37 @@
 
 <body>
 
-    <!-- Floating hearts -->
+    <!-- OPENING ANIMATION -->
+
+    <div id="opening">
+
+        <div class="opening-content">
+
+            <div class="opening-heart">❤️</div>
+
+            <div class="opening-text">
+                Mummy, I made something for you…
+            </div>
+
+            <div class="opening-small">
+                Please give me a moment ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FLOATING HEARTS -->
+
     <div class="hearts">
+
         <div class="heart">❤️</div>
         <div class="heart">♡</div>
         <div class="heart">❤️</div>
         <div class="heart">♡</div>
         <div class="heart">❤️</div>
+
     </div>
 
 
@@ -348,7 +460,8 @@
             <div class="text">
 
                 <p>
-                    Mummy, mujhe pata hai ki <strong>5/20 in Maths</strong>
+                    Mummy, mujhe pata hai ki
+                    <strong>5/20 in Maths</strong>
                     dekhkar aapko kitna bura laga hoga.
                 </p>
 
@@ -472,7 +585,7 @@
                 </div>
 
                 <div class="promise-item">
-                    ❤️ And most importantly, I'll keep trying even when things get difficult.
+                    ❤️ I'll keep trying even when things get difficult.
                 </div>
 
             </div>
@@ -517,7 +630,7 @@
     </section>
 
 
-    <!-- MEMORIES -->
+    <!-- FOR EVERYTHING SHE DOES -->
 
     <section id="memories">
 
@@ -592,8 +705,10 @@
             </p>
 
             <p class="signature">
+
                 Mummy, I'm sorry.<br>
                 I love you. ❤️
+
             </p>
 
             <button onclick="finalMessage()">
@@ -645,19 +760,55 @@
 
     <script>
 
+        /* Opening animation */
+
+        window.addEventListener("load", function () {
+
+            setTimeout(function () {
+
+                document
+                    .getElementById("opening")
+                    .classList.add("hide");
+
+            }, 4500);
+
+        });
+
+
+        /* Apology button */
+
         function showApology() {
-            document.getElementById("extraApology").style.display = "block";
+
+            document
+                .getElementById("extraApology")
+                .style.display = "block";
+
         }
+
+
+        /* Promise button */
 
         function showPromise() {
-            document.getElementById("promiseMessage").style.display = "block";
+
+            document
+                .getElementById("promiseMessage")
+                .style.display = "block";
+
         }
 
+
+        /* Final button */
+
         function finalMessage() {
-            document.getElementById("finalMessage").style.display = "block";
+
+            document
+                .getElementById("finalMessage")
+                .style.display = "block";
+
         }
 
     </script>
 
 </body>
 </html>
+```
